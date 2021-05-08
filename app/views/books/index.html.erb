@@ -1,2 +1,33 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<h3>Books</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+        <td><a href="#">Show</a></td>
+        <td><a href="#">Edit</a></td>
+        <td><a href="#">Destroy</a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h3>New Book</h3>
+<%= form_with model:@book, local:true do |f| %>
+  <span>Title</span><br>
+  <%= f.text_field :title %><br>
+  <span>Body</span><br>
+  <%= f.text_area :body %><br>
+  <%= f.submit "Create Book" %>
+<% end %>
